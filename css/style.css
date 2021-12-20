@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap');
+/* font-family: 'Spartan', sans-serif; */
+/* Font size (numbers): 32px */
+
+/* ========================= */
+
+:root {
+    --Font:'Spartan', sans-serif;
+}
+/* ========================= */
+/*          THEMES           */
+body[data-theme="1"] {
+    /* #### Backgrounds */
+    --main-background: hsl(222, 26%, 31%);
+    --toggle-background-keypad-background: hsl(223, 31%, 20%);
+    --screen-background: hsl(224, 36%, 15%);
+
+    /* #### Keys */
+    --key-background1: hsl(225, 21%, 49%);
+    --key-shadow1: hsl(224, 28%, 35%);
+    --key-background-toggle: hsl(6, 63%, 50%);
+    --key-shadow2: hsl(6, 70%, 34%);
+    --key-background: hsl(30, 25%, 89%);
+    --key-shadow: hsl(28, 16%, 65%);
+
+    /* #### Text */
+    --text-header: rgb(255, 255, 255);
+    --text-key-pad-num: rgb(35, 44, 67);
+    --text-del-reset: rgb(255, 255, 255);
+    --text-3: rgb(255, 255, 255); /* = */
+    --text-footer: rgb(0, 0, 0);
+}
+body[data-theme="2"] {
+    /* #### Backgrounds */
+    --main-background: hsl(0, 0%, 90%);
+    --toggle-background-keypad-background: hsl(0, 5%, 81%);
+    --screen-background: hsl(0, 0%, 93%);
+
+    /* #### Keys */
+    --key-background1: hsl(185, 42%, 37%);
+    --key-shadow1: hsl(185, 58%, 25%);
+    --key-background-toggle: hsl(25, 98%, 40%);
+    --key-shadow2: hsl(25, 99%, 27%);
+    --key-background: hsl(45, 7%, 89%);
+    --key-shadow: hsl(35, 11%, 61%);
+
+    /* #### Text */
+    --text-header: rgb(53, 53, 44);
+    --text-key-pad-num: rgb(53, 53, 44);
+    --text-del-reset: rgb(255, 255, 255);
+    --text-3: rgb(255, 255, 255); /* = */
+    --text-footer: hsl(0, 0%, 0%);
+}
+body[data-theme="3"] {
+    /* #### Backgrounds */
+    --main-background: hsl(268, 75%, 9%);
+    --toggle-background-keypad-background: hsl(268, 71%, 12%);
+    --screen-background: hsl(268, 71%, 12%);
+
+    /* #### Keys */
+    --key-background1: hsl(281, 89%, 26%);
+    --key-shadow1: hsl(285, 91%, 52%);
+    --key-background-toggle: hsl(176, 100%, 44%);
+    --key-shadow2: hsl(177, 92%, 70%);
+    --key-background: hsl(268, 47%, 21%);
+    --key-shadow: hsl(290, 70%, 36%);
+
+    /* #### Text */
+    --text-header: rgb(255, 229, 61);
+    --text-key-pad-num: rgb(255, 229, 61);
+    --text-del-reset: rgb(255, 255, 255);
+    --text-3: rgb(27, 36, 40); /* = */
+    --text-footer: rgb(255, 255, 255);
+}
+
+/* ========================= */
+
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+* {
+    font-family: var(--Font);
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none; border: none;
+    /* text-transform: capitalize; */
+    transition: .2s all ease-in-out;
+}
+
+body {
+    background-color: var(--main-background);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ========================= */
+main {
+    width: 55rem;
+    padding: .5rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-header);
+    margin-bottom: 3rem;
+}
+
+.header h1 {
+    text-transform: lowercase;
+    font-size: 2.5rem;
+}
+
+.header .theme {
+    display: flex;
+    align-items: center;
+}
+
+.header .theme h2 {
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin-right: 1rem;
+    align-self: end;
+    padding-bottom: 1rem;
+}
+
+.header .theme .theme-control {
+    width: 7rem;
+}
+
+.header .theme .theme-control .theme-num{
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0 .7rem;
+}
+
+.header .theme .theme-control input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2.5rem;
+    margin: .5rem 0;
+    border-radius: 5rem;
+    padding: .5rem;
+    background-color: var(--toggle-background-keypad-background);
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    background: var(--key-background-toggle);
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+/* ========================= */
+
+form .display {
+    margin-bottom: 2.5rem;
+}
+
+form .display input[type=textfield]{
+    width: 100%;
+    height: 10rem;
+    padding: 3.5rem;
+    border-radius: 2rem;
+    background-color: var(--screen-background);
+    color: var(--text-header);
+    text-align: end;
+    font-size: 3.5rem;
+}
+
+form .calc-body {
+    padding: 3rem;
+    background-color: var(--toggle-background-keypad-background);
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+form .calc-body .buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+form .calc-body .buttons input {
+    width: 10rem;
+    padding: 1rem 0;
+    border-radius: 1.5rem;
+    font-size: 3rem;
+    color: var(--text-key-pad-num);
+    box-shadow: 0 .5rem 0 0 var(--key-shadow);
+    background-color: var(--key-background);
+}
+
+form .calc-body .buttons #delete, form .calc-body .buttons .reset  {
+    background-color: var(--key-background1);
+    color: var(--text-del-reset);
+    font-size: 2rem;
+    box-shadow: 0 .5rem 0 0 var(--key-shadow1);
+}
+
+form .calc-body .buttons .reset, form .calc-body .buttons .equal {
+    width: 47%;
+}
+
+form .calc-body .buttons .equal {
+    background-color: var(--key-background-toggle);
+    box-shadow: 0 .5rem 0 0 var(--key-shadow2);
+    color: var(--text-3);
+}
+
+/* ========================= */
+
+footer { 
+    font-size: 11px; text-align: center;
+    color: var(--text-footer);
+}
+footer a {
+    color: var(--text-header);
+}
+
+/* ========================= */
+
+@media only screen and (max-width:600px) {
+    html {
+        font-size: 55%;
+    }
+}
+@media only screen and (max-width:500px) {
+    html {
+        font-size: 45%;
+    }
+}
+@media only screen and (max-width:400px) {
+    html {
+        font-size: 35%;
+    }
+}
