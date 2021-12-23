@@ -4,14 +4,13 @@ window.onload = () => {
 }
 
 const theme = val => {
-    // console.log(typeof parseInt(val));
-    // console.log(parseInt(val));
     document.body.setAttribute('data-theme', parseInt(val)+1)
 }
 
 // ========= calc
 // aux
 let aux = true
+let auxActions = ['.','+','-','*','/']
 
 // buttons
 let button1 = document.getElementById('button1')
@@ -27,6 +26,7 @@ let button0 = document.getElementById('button0')
 let buttonPoint = document.getElementById('buttonPoint')
 
 // actions
+let reset = document.getElementById('resetButton')
 let del = document.getElementById('delete')
 let addition = document.getElementById('addition')
 let subtraction = document.getElementById('subtraction')
@@ -67,56 +67,88 @@ button9.onclick = () => {
 
 
 addition.onclick = () => {
-    document.calculator.ans.value += '+'
     aux = true
+    // display vacio ??
+    document.calculator.ans.value === '' ?
+        document.calculator.ans.value = ''
+    :
+        // ultimo char = +,-,*,/,.
+        auxActions.find(e => document.calculator.ans.value.substr(-1).includes(e)) ?
+            document.calculator.ans.value += ''
+        :
+            document.calculator.ans.value += '+'
 }
 subtraction.onclick = () => {
-    document.calculator.ans.value += '-'
     aux = true
+    // display vacio ??
+    document.calculator.ans.value === '' ?
+        document.calculator.ans.value = ''
+    :
+        // ultimo char = +,-,*,/,.
+        auxActions.find(e => document.calculator.ans.value.substr(-1).includes(e)) ?
+            document.calculator.ans.value += ''
+        :
+            document.calculator.ans.value += '-'
 }
 divide.onclick = () => {
-    document.calculator.ans.value += '/'
     aux = true
+    // display vacio ??
+    document.calculator.ans.value === '' ?
+        document.calculator.ans.value = ''
+    :
+        // ultimo char = +,-,*,/,.
+        auxActions.find(e => document.calculator.ans.value.substr(-1).includes(e)) ?
+            document.calculator.ans.value += ''
+        :
+            document.calculator.ans.value += '/'
 }
 multiply.onclick = () => {
-    document.calculator.ans.value += '*'
     aux = true
+    // display vacio ??
+    document.calculator.ans.value === '' ?
+        document.calculator.ans.value = ''
+    :
+        // ultimo char = +,-,*,/,.
+        auxActions.find(e => document.calculator.ans.value.substr(-1).includes(e)) ?
+            document.calculator.ans.value += ''
+        :
+            document.calculator.ans.value += '*'
 }
 
 
 // equal - function
 equal.onclick = () => {
-    if (!(document.calculator.ans.value === '')) {
+    //display vacio ??
+    !(document.calculator.ans.value === '') ?
         document.calculator.ans.value = eval(document.calculator.ans.value)
-    } else {
+    :
         document.calculator.ans.value += ''
-    }
 }
 
 
 // point - function
 buttonPoint.onclick = () => {
-    // console.log(document.calculator.ans.value==='');
     // display vacio ??
     if (document.calculator.ans.value === '') {
         document.calculator.ans.value += '0.'
-        aux = false
-
         // point available
     } else if (aux) {
-        if (document.calculator.ans.value.substr(-1) === '.') {
+        aux = false
+        // ultimo char = +,-,*,/,.
+        auxActions.find(e => document.calculator.ans.value.substr(-1).includes(e)) ?
             document.calculator.ans.value += ''
-            aux = false
-        } else {
+        :
             document.calculator.ans.value += '.'
-            aux= false
-        }
     }
 }
 
 // delete - funtion
 del.onclick = () => {
-    // console.log(document.calculator.ans.value.slice(0,-1));
     let aux = document.calculator.ans.value.slice(0,-1)
     document.calculator.ans.value = aux
+}
+
+// reset - funtion
+reset.onclick = () => {
+    aux = true
 }
